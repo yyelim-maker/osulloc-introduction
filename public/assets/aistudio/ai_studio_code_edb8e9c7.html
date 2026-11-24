@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OSULLOC | 제주의 자연을 담아낸 차, 오설록</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Noto+Serif+KR:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#0F231B',
+              forest: '#1B362A',
+              deep: '#142920',
+              sage: '#446351',
+              linen: '#F8F6F0',
+              sand: '#EFECE4',
+              gold: '#C3A370',
+              goldLight: '#E8DCC4',
+              charcoal: '#212623',
+              muted: '#637069'
+            }
+          },
+          fontFamily: {
+            serif: ['"Noto Serif KR"', 'serif'],
+            sans: ['"Noto Sans KR"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            display: ['"Playfair Display"', 'serif'],
+          },
+          boxShadow: {
+            'card': '0 12px 36px -10px rgba(15, 35, 27, 0.08)',
+            'elevated': '0 24px 50px -15px rgba(15, 35, 27, 0.16)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #F8F6F0;
+      color: #212623;
+      font-family: 'Noto Sans KR', sans-serif;
+      word-break: keep-all;
+    }
+    .font-serif-kr { font-family: 'Noto Serif KR', Georgia, serif; }
+    
+    .glass-nav {
+      background: rgba(248, 246, 240, 0.94);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #EFECE4; }
+    ::-webkit-scrollbar-thumb { background: #637069; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #1B362A; }
+  </style>
+</head>
+<body class="selection:bg-brand-forest selection:text-white antialiased">
+
+  <!-- ==============================================
+       1. NAVIGATION BAR
+       ============================================== -->
+  <header class="fixed top-0 left-0 right-0 z-40 transition-all duration-300 glass-nav border-b border-brand-sand">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3">
+        <span class="text-2xl tracking-[0.28em] font-serif-kr font-bold text-brand-dark">OSULLOC</span>
+        <span class="text-xs text-brand-muted tracking-widest pl-2 border-l border-brand-sand font-serif-kr hidden sm:inline">JEJU 1979</span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center space-x-10 text-sm font-medium tracking-wide text-brand-charcoal">
+        <a href="#story" class="hover:text-brand-forest transition-colors">브랜드 헤리티지</a>
+        <a href="#collection" class="hover:text-brand-forest transition-colors">티 컬렉션</a>
+        <a href="#routine" class="hover:text-brand-forest transition-colors">브루잉 루틴</a>
+        <a href="#space" class="hover:text-brand-forest transition-colors">공간 경험</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a href="https://www.osulloc.com" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex text-xs px-5 py-2.5 rounded-full bg-brand-forest text-white hover:bg-brand-dark transition shadow-sm items-center gap-2">
+          <span>오설록 공식 스토어</span>
+          <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+        </a>
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobileMenuBtn" aria-label="메뉴 열기" class="md:hidden text-brand-dark p-2 text-xl focus:outline-none">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Nav Dropdown -->
+    <div id="mobileMenu" class="hidden md:hidden bg-brand-linen border-t border-brand-sand px-6 py-5 space-y-4 text-sm font-medium text-brand-charcoal">
+      <a href="#story" class="block py-1 hover:text-brand-forest" onclick="toggleMobileMenu()">브랜드 헤리티지</a>
+      <a href="#collection" class="block py-1 hover:text-brand-forest" onclick="toggleMobileMenu()">티 컬렉션</a>
+      <a href="#routine" class="block py-1 hover:text-brand-forest" onclick="toggleMobileMenu()">브루잉 루틴</a>
+      <a href="#space" class="block py-1 hover:text-brand-forest" onclick="toggleMobileMenu()">공간 경험</a>
+      <a href="https://www.osulloc.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs px-4 py-2 rounded-full bg-brand-forest text-white mt-2">
+        <span>오설록 공식 스토어 바로가기</span>
+        <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+      </a>
+    </div>
+  </header>
+
+  <!-- ==============================================
+       2. HERO SECTION
+       ============================================== -->
+  <section class="relative min-h-[92vh] flex items-center justify-center text-white px-6 pt-24 pb-16 overflow-hidden">
+    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-1000 scale-105" 
+         style="background-image: url('https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&w=1800&q=80');"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/95 via-brand-dark/65 to-brand-dark/75 pointer-events-none"></div>
+
+    <div class="relative z-10 max-w-4xl mx-auto text-center flex flex-col items-center">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/25 backdrop-blur-md mb-8 text-xs tracking-[0.25em] uppercase text-white/90">
+        <span class="w-2 h-2 rounded-full bg-brand-gold"></span>
+        Jeju Heritage &amp; Organic Tea Culture
+      </div>
+
+      <h1 class="text-3xl sm:text-5xl lg:text-6xl font-serif-kr font-normal leading-[1.3] sm:leading-[1.25] tracking-tight mb-8">
+        제주의 자연을 온전히 담아낸<br>
+        <span class="font-semibold text-brand-sand">한 잔의 쉼, 오설록</span>
+      </h1>
+
+      <p class="text-sm sm:text-lg text-white/85 max-w-2xl font-light leading-relaxed mb-10">
+        돌밭을 일구어 이룩한 유기농 다원의 맑은 숨결.<br class="hidden sm:inline">
+        한라산의 바람과 화산암반수, 따사로운 볕이 빚어낸 한국 고유의 차 문화를 제안합니다.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+        <a href="#collection" class="w-full sm:w-auto px-8 py-4 rounded-full bg-brand-gold text-brand-dark hover:bg-brand-goldLight font-medium text-sm tracking-wider transition shadow-lg text-center">
+          티 컬렉션 감상하기
+        </a>
+        <a href="#story" class="w-full sm:w-auto px-8 py-4 rounded-full border border-white/40 hover:bg-white/10 backdrop-blur-sm text-white font-medium text-sm tracking-wider transition text-center">
+          1979 다원 이야기
+        </a>
+      </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <a href="#story" class="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/60 hover:text-white transition">
+      <span class="text-[10px] tracking-widest uppercase font-mono">Scroll Down</span>
+      <div class="w-5 h-8 rounded-full border border-white/30 flex items-start justify-center p-1">
+        <div class="w-1 h-2 rounded-full bg-brand-gold animate-bounce"></div>
+      </div>
+    </a>
+  </section>
+
+  <!-- ==============================================
+       3. BRAND HERITAGE SECTION
+       ============================================== -->
+  <section id="story" class="py-24 px-6 bg-brand-linen">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="text-xs tracking-[0.25em] text-brand-sage font-semibold uppercase">Brand Heritage</span>
+        <h2 class="text-3xl sm:text-4xl font-serif-kr text-brand-dark mt-2 mb-4 font-normal">
+          돌밭을 일구어 세운 <span class="font-semibold text-brand-forest">제주 유기농 다원</span>
+        </h2>
+        <div class="w-12 h-0.5 bg-brand-gold mx-auto mb-6"></div>
+        <p class="text-brand-muted text-sm sm:text-base leading-relaxed">
+          1979년부터 시작된 끈기 있는 개간으로 제주의 거친 황무지를 푸른 생명의 차밭으로 바꾸었습니다. 화산회토와 청정한 해무, 엄격한 유기농 재배가 오설록만의 깊은 풍미를 완성합니다.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-5">
+        <div class="p-6 rounded-2xl bg-white border border-brand-sand text-center shadow-card">
+          <span class="block text-3xl sm:text-4xl font-display font-bold text-brand-forest mb-1">1979</span>
+          <span class="text-xs text-brand-muted">제주 다원 개간 원년</span>
+        </div>
+        <div class="p-6 rounded-2xl bg-white border border-brand-sand text-center shadow-card">
+          <span class="block text-3xl sm:text-4xl font-display font-bold text-brand-forest mb-1">100%</span>
+          <span class="text-xs text-brand-muted">유기농 인증 직영 다원</span>
+        </div>
+        <div class="p-6 rounded-2xl bg-white border border-brand-sand text-center shadow-card">
+          <span class="block text-3xl sm:text-4xl font-display font-bold text-brand-forest mb-1">Top 3</span>
+          <span class="text-xs text-brand-muted">세계 녹차 품평회 수상</span>
+        </div>
+        <div class="p-6 rounded-2xl bg-white border border-brand-sand text-center shadow-card">
+          <span class="block text-3xl sm:text-4xl font-display font-bold text-brand-forest mb-1">3 Gardens</span>
+          <span class="text-xs text-brand-muted">서광 · 도순 · 한남 다원</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================================
+       4. CURATED TEA COLLECTION
+       ============================================== -->
+  <section id="collection" class="py-24 px-6 bg-brand-sand/35">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+        <div>
+          <span class="text-xs tracking-[0.25em] text-brand-sage font-semibold uppercase">Curated Tea Collection</span>
+          <h2 class="text-3xl sm:text-4xl font-serif-kr text-brand-dark mt-2 font-normal">
+            오설록 <span class="font-semibold text-brand-forest">시그니처 컬렉션</span>
+          </h2>
+        </div>
+        <p class="text-brand-muted text-sm max-w-md mt-4 md:mt-0">
+          가장 먼저 돋아난 첫물차의 기품부터 감미로운 꽃향기와 제주 영귤의 싱그러움까지, 일상에 쉼을 더하는 대표 라인업입니다.
+        </p>
+      </div>
+
+      <!-- Filter Buttons -->
+      <div class="flex flex-wrap gap-2.5 mb-10 border-b border-brand-sand pb-4">
+        <button onclick="filterCollection('all', this)" class="collection-filter-btn px-5 py-2 rounded-full text-xs sm:text-sm font-medium bg-brand-forest text-white transition">전체 보기</button>
+        <button onclick="filterCollection('pure', this)" class="collection-filter-btn px-5 py-2 rounded-full text-xs sm:text-sm font-medium bg-white text-brand-muted border border-brand-sand hover:text-brand-dark transition">순수차 (Pure Tea)</button>
+        <button onclick="filterCollection('blend', this)" class="collection-filter-btn px-5 py-2 rounded-full text-xs sm:text-sm font-medium bg-white text-brand-muted border border-brand-sand hover:text-brand-dark transition">블렌디드 티 (Blended Tea)</button>
+        <button onclick="filterCollection('gift', this)" class="collection-filter-btn px-5 py-2 rounded-full text-xs sm:text-sm font-medium bg-white text-brand-muted border border-brand-sand hover:text-brand-dark transition">선물 세트 (Gift)</button>
+      </div>
+
+      <!-- Product Cards Grid -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- 1. 일로향 -->
+        <div class="tea-card bg-white rounded-3xl p-6 border border-brand-sand shadow-card flex flex-col justify-between" data-category="pure">
+          <div>
+            <div class="relative h-64 rounded-2xl overflow-hidden bg-brand-linen mb-6 border border-brand-sand/60">
+              <span class="absolute top-3 left-3 px-3 py-1 bg-brand-forest/90 backdrop-blur-sm text-brand-gold text-[11px] font-bold rounded-full z-10 shadow-sm">
+                최고급 명차
+              </span>
+              <img src="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=1000&q=80" 
+                   alt="일로향과 햇살 비치는 싱그러운 찻잎" 
+                   class="w-full h-full object-cover rounded-xl transition duration-700 hover:scale-105">
+            </div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-mono text-brand-gold font-bold">ILLOHYANG</span>
+              <span class="text-[11px] text-brand-muted flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-[#C2E09B] inline-block border border-black/10"></span>맑은 담녹빛</span>
+            </div>
+            <h3 class="text-xl font-serif-kr text-brand-dark font-semibold mb-2">일로향 (Illohyang)</h3>
+            <p class="text-xs text-brand-muted leading-relaxed mb-4">
+              '차를 끓이는 다로(茶爐)의 향기'라는 뜻의 최상급 수제차. 햇살이 비치는 싱그러운 어린 찻잎의 순수함을 오롯이 담았습니다.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              <span class="text-[11px] px-2.5 py-1 rounded bg-brand-sand/60 text-brand-charcoal">#세계품평회1위</span>
+              <span class="text-[11px] px-2.5 py-1 rounded bg-brand-sand/60 text-brand-charcoal">#첫물차</span>
+              <span class="text-[11px] px-2.5 py-1 rounded bg-brand-sand/60 text-brand-charcoal">#수제제다</span>
+            </div>
+          </div>
+          <div class="pt-4 border-t border-brand-sand/60 flex items-center justify-between">
+            <span class="text-xs text-brand-muted"><i class="fa-solid fa-temperature-half text-brand-gold mr-1"></i>60°C · 2분</span>
+            <button onclick="openTeaModal('illohyang')" class="text-xs font-semibold text-brand-forest hover:text-brand-dark flex items-center gap-1">
+              상세 보기 <i class="fa-solid fa-chevron-right text-[10px]"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- 2. 삼다연 제주영귤 -->
+        <div class="tea-card bg-white rounded-3xl p-6 border border-brand-sand shadow-card flex flex-col justify-between" data-category="blend">
+          <div>
+            <div class="relative h-64 rounded-2xl overflow-hidden bg-brand-linen mb-6 border border-brand-sand/60">
+              <span class="absolute top-3 left-3 px-3 py-1 bg-amber-700/90 backdrop-blur-sm text-white text-[11px] font-bold rounded-full z-10 shadow-sm">
+                시그니처 가향차
+              </span>
+              <img src="https://images.unsplash.com/photo-1582979512210-99b6a53386f9?auto=format&fit=crop&w=1000&q=80" 
+                   alt="삼다연 제주영귤 나무와 푸른 하늘" 
+                   class="w-full h-full object-cover rounded-xl transition duration-700 hover:scale-105">
+            </div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-mono text-brand-gold font-bold">SAMDAYEON TANGERINE</span>
+              <span class="text-[11px] text-brand-muted flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-[#E88E38] inline-block border border-black/10"></span>주홍빛 수색</span>
+            </div>
+            <h3 class="text-xl font-serif-kr text-brand-dark font-semibold mb-2">삼다연 제주영귤</h3>
+            <p class="text-xs text-brand-muted leading-relaxed mb-4">
+              제주 삼나무통에서 깊게 숙성된 발효차에 푸른 하늘 아래 탐스럽게 익은 제주 영귤의 상큼하고 싱그러운 과즙 아로마를 더했습니다.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              <span class="text-[11px] px-2.5 py-1 rounded bg-brand-sand/60 text-brand-charcoal">#제주영귤</span>
+              <span class="text-[11px] px-2.5 py-1 rounded bg-brand-sand/60 text-brand-charcoal">#탐스러운귤나무</span>
+              <span class="text-[11px] px-2.5 py-1 rounded bg-brand-sand/60 text-brand-charcoal">#오후의리프레시</span>
+            </div>
+          </div>
+          <div class="pt-4 border-t border-brand-sand/60 flex items-center justify-between">
+            <span class="text-xs text-brand-muted"><i class="fa-solid fa-temperature-half text-brand-gold mr-1"></i>90°C · 2분</span>
+            <button onclick="openTeaModal('tangerine')" class="text-xs font-semibold text-brand-forest hover:text-brand-dark flex items-center gap-1">
+              상세 보기 <i class="fa-solid fa-chevron-right text-[10px]"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- 3. 웨딩 그린티 -->
+        <div class="tea-card bg-white rounded-3xl p-6 border border-brand-sand shadow-card flex flex-col justify-between" data-category="blend">
+          <div>
+            <div class="relative h-64 rounded-2xl overflow-hidden bg-brand-linen mb-6 border border-brand-sand/60">
+              <span class="absolute top-3 left-3 px-3 py-1 bg-rose-800/90 backdrop-blur-sm text-white text-[11px] font-bold rounded-full z-10 shadow-sm">
+                로맨틱 티타임
+              </span>
+              <img src="https://images.unsplash.com/photo-1569864358642-9d1684040f43?auto=format&fit=crop&w=1000&q=80" 
+                   alt="웨딩 그린티와 그린 마카롱 디저트" 
+                   class="w-full h-full object-cover rounded-xl transition duration-700 hover:scale-105">
+            </div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-mono text-brand-gold font-bold">WEDDING GREEN TEA</span>
+              <span class="text-[11px] text-brand-muted flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-[#E5CD82] inline-block border border-black/10"></span>황금빛</span>
+            </div>
+            <h3 class="text-xl font-serif-kr text-brand-dark font-semibold mb-2">웨딩 그린티 (Wedding Green Tea)</h3>
+            <p class="text-xs text-brand-muted leading-relaxed mb-4">
+              그린 마카롱과 꽃잎이 어우러진 감미로운 티타임. 설레는 축복을 담아 화사한 장미 꽃잎과 마스카포네 치즈향을 블렌딩했습니다.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              <span class="text-[11px] px-2.5 py-1 rounded bg-brand-sand/60 text-brand-charcoal">#마카롱티타임</span>
+              <span class="text-[11px] px-2.5 py-1 rounded bg-brand-sand/60 text-brand-charcoal">#꽃향기블렌딩</span>
+              <span class="text-[11px] px-2.5 py-1 rounded bg-brand-sand/60 text-brand-charcoal">#달콤한디저트</span>
+            </div>
+          </div>
+          <div class="pt-4 border-t border-brand-sand/60 flex items-center justify-between">
+            <span class="text-xs text-brand-muted"><i class="fa-solid fa-temperature-half text-brand-gold mr-1"></i>70°C · 1.5분</span>
+            <button onclick="openTeaModal('wedding')" class="text-xs font-semibold text-brand-forest hover:text-brand-dark flex items-center gap-1">
+              상세 보기 <i class="fa-solid fa-chevron-right text-[10px]"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- 4. 마스터즈 티 기프트 에디션 -->
+        <div class="tea-card bg-white rounded-3xl p-6 border border-brand-sand shadow-card flex flex-col justify-between" data-category="gift">
+          <div>
+            <div class="relative h-64 rounded-2xl overflow-hidden bg-brand-linen mb-6 border border-brand-sand/60">
+              <span class="absolute top-3 left-3 px-3 py-1 bg-brand-forest text-brand-gold text-[11px] font-bold rounded-full z-10 shadow-sm">
+                프리미엄 기프트
+              </span>
+              <img src="https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&w=1000&q=80" 
+                   alt="마스터즈 티 기프트 에디션 박스 세트" 
+                   class="w-full h-full object-cover rounded-xl transition duration-700 hover:scale-105">
+            </div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-mono text-brand-gold font-bold">MASTER'S GIFT EDITION</span>
+              <span class="text-[11px] text-brand-muted flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-brand-forest inline-block border border-black/10"></span>시그니처 컬렉션</span>
+            </div>
+            <h3 class="text-xl font-serif-kr text-brand-dark font-semibold mb-2">마스터즈 티 기프트 에디션</h3>
+            <p class="text-xs text-brand-muted leading-relaxed mb-4">
+              말차 라떼부터 영귤·호지차 밀크티 패키지까지, 오설록의 역사와 티하우스 감성을 품격 있게 엮어낸 프리미엄 패키지입니다.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              <span class="text-[11px] px-2.5 py-1 rounded bg-brand-sand/60 text-brand-charcoal">#밀크티에디션</span>
+              <span class="text-[11px] px-2.5 py-1 rounded bg-brand-sand/60 text-brand-charcoal">#오설록기프트</span>
+              <span class="text-[11px] px-2.5 py-1 rounded bg-brand-sand/60 text-brand-charcoal">#고급지함</span>
+            </div>
+          </div>
+          <div class="pt-4 border-t border-brand-sand/60 flex items-center justify-between">
+            <span class="text-xs text-brand-muted"><i class="fa-solid fa-gift text-brand-gold mr-1"></i>정성스러운 패키징</span>
+            <button onclick="openTeaModal('masters')" class="text-xs font-semibold text-brand-forest hover:text-brand-dark flex items-center gap-1">
+              상세 보기 <i class="fa-solid fa-chevron-right text-[10px]"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- 5. 세작 -->
+        <div class="tea-card bg-white rounded-3xl p-6 border border-brand-sand shadow-card flex flex-col justify-between" data-category="pure">
+          <div>
+            <div class="relative h-64 rounded-2xl overflow-hidden bg-brand-linen mb-6 border border-brand-sand/60">
+              <span class="absolute top-3 left-3 px-3 py-1 bg-brand-forest text-white text-[11px] font-bold rounded-full z-10 shadow-sm">대표 순수차</span>
+              <img src="https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?auto=format&fit=crop&w=800&q=80" 
+                   alt="세작 어린 찻잎" 
+                   class="w-full h-full object-cover rounded-xl transition duration-700 hover:scale-105">
+            </div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-mono text-brand-gold font-bold">SEJAK</span>
+              <span class="text-[11px] text-brand-muted flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-[#A2C76A] inline-block border border-black/10"></span>연녹빛</span>
+            </div>
+            <h3 class="text-xl font-serif-kr text-brand-dark font-semibold mb-2">세작 (Sejak)</h3>
+            <p class="text-xs text-brand-muted leading-relaxed mb-4">곡우 무렵 어린 찻잎을 증제하고 덖어내어 싱그러운 향과 은은한 감칠맛이 일품인 오설록의 명차입니다.</p>
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              <span class="text-[11px] px-2.5 py-1 rounded bg-brand-sand/60 text-brand-charcoal">#어린찻잎</span>
+              <span class="text-[11px] px-2.5 py-1 rounded bg-brand-sand/60 text-brand-charcoal">#감칠맛</span>
+            </div>
+          </div>
+          <div class="pt-4 border-t border-brand-sand/60 flex items-center justify-between">
+            <span class="text-xs text-brand-muted"><i class="fa-solid fa-temperature-half text-brand-gold mr-1"></i>70°C · 2분</span>
+            <button onclick="openTeaModal('sejak')" class="text-xs font-semibold text-brand-forest hover:text-brand-dark flex items-center gap-1">
+              상세 보기 <i class="fa-solid fa-chevron-right text-[10px]"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- 6. 달빛걷기 -->
+        <div class="tea-card bg-white rounded-3xl p-6 border border-brand-sand shadow-card flex flex-col justify-between" data-category="blend">
+          <div>
+            <div class="relative h-64 rounded-2xl overflow-hidden bg-brand-linen mb-6 border border-brand-sand/60">
+              <span class="absolute top-3 left-3 px-3 py-1 bg-brand-dark text-brand-gold text-[11px] font-bold rounded-full z-10 shadow-sm">베스트셀러</span>
+              <img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=800&q=80" 
+                   alt="달빛걷기 티타임" 
+                   class="w-full h-full object-cover rounded-xl transition duration-700 hover:scale-105">
+            </div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-mono text-brand-gold font-bold">MOONLIGHT WALK</span>
+              <span class="text-[11px] text-brand-muted flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-[#E5B563] inline-block border border-black/10"></span>호박빛</span>
+            </div>
+            <h3 class="text-xl font-serif-kr text-brand-dark font-semibold mb-2">달빛걷기 (Moonlight Walk)</h3>
+            <p class="text-xs text-brand-muted leading-relaxed mb-4">제주 밤하늘 아래 산책하듯, 은은하고 달콤한 배 향미가 감도는 후발효차 기반의 대표 가향차입니다.</p>
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              <span class="text-[11px] px-2.5 py-1 rounded bg-brand-sand/60 text-brand-charcoal">#달콤한배향</span>
+              <span class="text-[11px] px-2.5 py-1 rounded bg-brand-sand/60 text-brand-charcoal">#밤의휴식</span>
+            </div>
+          </div>
+          <div class="pt-4 border-t border-brand-sand/60 flex items-center justify-between">
+            <span class="text-xs text-brand-muted"><i class="fa-solid fa-temperature-half text-brand-gold mr-1"></i>90°C · 2분</span>
+            <button onclick="openTeaModal('moonlight')" class="text-xs font-semibold text-brand-forest hover:text-brand-dark flex items-center gap-1">
+              상세 보기 <i class="fa-solid fa-chevron-right text-[10px]"></i>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================================
+       5. INTERACTIVE BREWING ROUTINE GUIDE
+       ============================================== -->
+  <section id="routine" class="py-24 px-6 bg-brand-linen">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <span class="text-xs tracking-[0.25em] text-brand-sage font-semibold uppercase">Daily Tea Routine</span>
+        <h2 class="text-3xl sm:text-4xl font-serif-kr text-brand-dark mt-2 font-normal">
+          오늘 당신을 위한 <span class="font-semibold text-brand-forest">골든 브루잉 룰</span>
+        </h2>
+        <div class="w-12 h-0.5 bg-brand-gold mx-auto my-4"></div>
+      </div>
+
+      <div class="max-w-4xl mx-auto bg-white rounded-3xl p-8 sm:p-12 border border-brand-sand shadow-elevated">
+        <div class="grid md:grid-cols-3 gap-6 text-center mb-8">
+          <div class="p-6 rounded-2xl bg-brand-linen border border-brand-sand">
+            <i class="fa-solid fa-temperature-low text-brand-forest text-2xl mb-2"></i>
+            <h4 class="text-xs text-brand-muted mb-1 font-medium">적정 수온</h4>
+            <p class="text-2xl font-bold font-display text-brand-dark">70°C ~ 90°C</p>
+            <span class="text-[11px] text-brand-muted">차 본연의 감칠맛 보존</span>
+          </div>
+          <div class="p-6 rounded-2xl bg-brand-linen border border-brand-sand">
+            <i class="fa-solid fa-hourglass-half text-brand-gold text-2xl mb-2"></i>
+            <h4 class="text-xs text-brand-muted mb-1 font-medium">침출 시간</h4>
+            <p class="text-2xl font-bold font-display text-brand-dark">1분 30초 ~ 2분</p>
+            <span class="text-[11px] text-brand-muted">티백을 쥐어짜지 않기</span>
+          </div>
+          <div class="p-6 rounded-2xl bg-brand-linen border border-brand-sand">
+            <i class="fa-solid fa-mug-hot text-brand-sage text-2xl mb-2"></i>
+            <h4 class="text-xs text-brand-muted mb-1 font-medium">적정 물의 양</h4>
+            <p class="text-2xl font-bold font-display text-brand-dark">150ml</p>
+            <span class="text-[11px] text-brand-muted">부드러운 한 잔의 쉼</span>
+          </div>
+        </div>
+        <p class="text-xs text-center text-brand-muted leading-relaxed">
+          한 김 식힌 물에 찻잎을 가만히 내려두고 수색이 맑게 퍼지는 과정을 지켜보세요. 차를 마시는 시간 자체가 마음의 정원이 됩니다.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================================
+       6. SPACE EXPERIENCE SECTION
+       ============================================== -->
+  <section id="space" class="py-24 px-6 bg-brand-forest text-white">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="text-xs tracking-[0.25em] text-brand-gold font-semibold uppercase">Off-line Space</span>
+        <h2 class="text-3xl sm:text-4xl font-serif-kr mt-2 font-normal">오설록이 제안하는 차의 공간</h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-brand-dark/60 rounded-3xl p-7 border border-white/10 hover:border-brand-gold/50 transition">
+          <h3 class="text-lg font-serif-kr font-bold mb-2 text-white">제주 티뮤지엄</h3>
+          <p class="text-xs text-white/70 leading-relaxed mb-4">끝없는 서광다원 옆에서 즐기는 한국 최초의 차 박물관이자 다도 체험 공간 티스톤(Tea Stone).</p>
+          <span class="text-[11px] text-brand-gold">제주 서귀포시 안덕면 신화역사로 15</span>
+        </div>
+        <div class="bg-brand-dark/60 rounded-3xl p-7 border border-white/10 hover:border-brand-gold/50 transition">
+          <h3 class="text-lg font-serif-kr font-bold mb-2 text-white">티하우스 북촌점</h3>
+          <p class="text-xs text-white/70 leading-relaxed mb-4">1970년대 양옥의 고즈넉한 정취와 바설록의 무알코올 티 칵테일 코스를 경험할 수 있는 공간.</p>
+          <span class="text-[11px] text-brand-gold">서울 종로구 북촌로 45</span>
+        </div>
+        <div class="bg-brand-dark/60 rounded-3xl p-7 border border-white/10 hover:border-brand-gold/50 transition">
+          <h3 class="text-lg font-serif-kr font-bold mb-2 text-white">티하우스 한남점</h3>
+          <p class="text-xs text-white/70 leading-relaxed mb-4">페이스갤러리와의 협업으로 미술 작품과 정갈한 차 디저트가 공존하는 도심 속 휴식처.</p>
+          <span class="text-[11px] text-brand-gold">서울 용산구 이태원로 267 2층</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================================
+       7. FOOTER
+       ============================================== -->
+  <footer class="bg-brand-dark text-white/60 text-xs py-12 px-6 border-t border-white/10">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+      <div>
+        <span class="text-xl tracking-[0.25em] font-serif-kr font-bold text-white block mb-2">OSULLOC</span>
+        <p class="text-[11px]">제주의 자연을 오롯이 담아낸 한 잔의 쉼, 오설록 브랜드 쇼케이스</p>
+      </div>
+      <p class="text-[11px]">© OSULLOC All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ==============================================
+       PRODUCT DETAIL MODAL
+       ============================================== -->
+  <div id="productDetailModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
+    <div id="modalBox" class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 relative shadow-2xl overflow-hidden">
+      <button onclick="closeTeaModal()" aria-label="닫기" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-brand-sand text-brand-dark flex items-center justify-center hover:bg-brand-sand/80 transition">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="flex flex-col sm:flex-row gap-6 items-start mt-2">
+        <div class="w-full sm:w-1/2 h-64 rounded-2xl overflow-hidden bg-brand-linen flex-shrink-0">
+          <img id="modalDetailImg" src="" alt="제품 이미지" class="w-full h-full object-cover">
+        </div>
+        <div class="w-full sm:w-1/2 flex flex-col justify-between h-full">
+          <div>
+            <span id="modalDetailCat" class="text-[11px] font-mono tracking-wider text-brand-gold uppercase font-bold">CATEGORY</span>
+            <h3 id="modalDetailTitle" class="text-2xl font-serif-kr font-bold text-brand-dark mt-1 mb-2">제품명</h3>
+            <p id="modalDetailDesc" class="text-xs text-brand-muted leading-relaxed mb-4">설명</p>
+            <div class="space-y-1.5 p-3 bg-brand-linen rounded-xl text-xs mb-4">
+              <div class="flex justify-between">
+                <span class="text-brand-muted">채엽/원산지:</span>
+                <span id="modalDetailOrigin" class="font-medium text-brand-dark">제주 직영 다원</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-brand-muted">테이스팅 노트:</span>
+                <span id="modalDetailNotes" class="font-medium text-brand-forest">감칠맛, 단맛</span>
+              </div>
+            </div>
+          </div>
+          <a href="https://www.osulloc.com" target="_blank" rel="noopener noreferrer" class="w-full py-3 bg-brand-forest text-white text-center text-xs rounded-full font-medium hover:bg-brand-dark transition shadow-sm">
+            오설록 공식몰에서 보기
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    // Product Catalog Data
+    const productCatalog = {
+      illohyang: {
+        title: "일로향 (Illohyang)",
+        cat: "명품 순수차",
+        desc: "이른 봄 가장 먼저 돋아나는 여린 차순만을 선별해 장인의 손끝으로 완성한 최상급 명차입니다. 맑고 기품 있는 어린 순 향과 감칠맛이 빼어납니다.",
+        origin: "제주 한남 다원 첫물차",
+        notes: "기품 있는 어린 순 향, 극상의 은은한 단맛",
+        img: "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=1000&q=80"
+      },
+      tangerine: {
+        title: "삼다연 제주영귤",
+        cat: "블렌디드 티",
+        desc: "제주 삼나무통에서 숙성된 깊고 구수한 풍미의 후발효차에 무농약 제주 영귤의 싱그럽고 상큼한 과즙 아로마를 조화롭게 깃들인 티입니다.",
+        origin: "제주 후발효차 + 제주 영귤",
+        notes: "상큼한 감귤 향, 은은한 삼나무 향",
+        img: "https://images.unsplash.com/photo-1582979512210-99b6a53386f9?auto=format&fit=crop&w=1000&q=80"
+      },
+      wedding: {
+        title: "웨딩 그린티 (Wedding Green Tea)",
+        cat: "블렌디드 티",
+        desc: "녹차 마카롱과 꽃잎의 설렘을 담은 장미와 콘플라워, 마스카포네 치즈향의 달콤하고 화사한 향미가 퍼지는 축복의 티입니다.",
+        origin: "제주 유기농 녹차 + 꽃잎 블렌딩",
+        notes: "화사한 꽃향, 달콤한 치즈향",
+        img: "https://images.unsplash.com/photo-1569864358642-9d1684040f43?auto=format&fit=crop&w=1000&q=80"
+      },
+      masters: {
+        title: "마스터즈 티 기프트 에디션",
+        cat: "선물 세트",
+        desc: "말차 라떼와 오리지널 밀크티, 영귤 밀크티 및 호지차 라떼까지 오설록 명작들을 고풍스럽게 엮어낸 최고급 선물 세트입니다.",
+        origin: "제주 직영 다원 시그니처 4종",
+        notes: "다채로운 풍미의 조화, 품격 있는 패키지",
+        img: "https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&w=1000&q=80"
+      },
+      sejak: {
+        title: "세작 (Sejak)",
+        cat: "순수차",
+        desc: "곡우 무렵 어린 찻잎을 정성스럽게 덖고 찌는 복합 제다법으로 탄생시킨 오설록의 대표 명차입니다.",
+        origin: "제주 서광 다원",
+        notes: "감칠맛, 싱그러운 풀내음",
+        img: "https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?auto=format&fit=crop&w=800&q=80"
+      },
+      moonlight: {
+        title: "달빛걷기 (Moonlight Walk)",
+        cat: "블렌디드 티",
+        desc: "달콤하고 시원한 배의 향미를 블렌딩하여 달빛 아래 하루를 차분하게 마무리할 때 제격입니다.",
+        origin: "제주 후발효차 + 돌배향",
+        notes: "달콤한 배향, 부드러운 꿀맛",
+        img: "https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=800&q=80"
+      }
+    };
+
+    // Modal Control
+    const modal = document.getElementById('productDetailModal');
+    const modalBox = document.getElementById('modalBox');
+
+    function openTeaModal(key) {
+      const p = productCatalog[key];
+      if (!p) return;
+      document.getElementById('modalDetailTitle').textContent = p.title;
+      document.getElementById('modalDetailCat').textContent = p.cat;
+      document.getElementById('modalDetailDesc').textContent = p.desc;
+      document.getElementById('modalDetailOrigin').textContent = p.origin;
+      document.getElementById('modalDetailNotes').textContent = p.notes;
+      document.getElementById('modalDetailImg').src = p.img;
+
+      modal.classList.remove('hidden');
+      setTimeout(() => modal.classList.remove('opacity-0'), 20);
+    }
+
+    function closeTeaModal() {
+      modal.classList.add('opacity-0');
+      setTimeout(() => modal.classList.add('hidden'), 300);
+    }
+
+    // Modal Background Click & ESC Key listener
+    modal.addEventListener('click', (e) => {
+      if (!modalBox.contains(e.target)) closeTeaModal();
+    });
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeTeaModal();
+    });
+
+    // Collection Filter
+    function filterCollection(cat, btn) {
+      document.querySelectorAll('.collection-filter-btn').forEach(b => {
+        b.classList.remove('bg-brand-forest', 'text-white');
+        b.classList.add('bg-white', 'text-brand-muted');
+      });
+      btn.classList.add('bg-brand-forest', 'text-white');
+      btn.classList.remove('bg-white', 'text-brand-muted');
+
+      document.querySelectorAll('.tea-card').forEach(card => {
+        if (cat === 'all' || card.getAttribute('data-category') === cat) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
+    // Mobile Menu Toggle
+    const mobileMenu = document.getElementById('mobileMenu');
+    function toggleMobileMenu() {
+      mobileMenu.classList.toggle('hidden');
+    }
+    document.getElementById('mobileMenuBtn').addEventListener('click', toggleMobileMenu);
+  </script>
+</body>
+</html>

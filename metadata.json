@@ -1,0 +1,6 @@
+{
+  "name": "OSULLOC | 제주의 자연을 담아낸 차, 오설록",
+  "description": "제주의 거친 자연과 화산암반수, 따스한 볕이 빚어낸 한국 고유의 차 문화를 제안하는 오설록 브랜드 쇼케이스 및 티 컬렉션 웹 애플리케이션입니다.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
